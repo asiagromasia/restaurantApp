@@ -1,0 +1,15 @@
+{
+  "name": "restnode",
+  "version": "1.0.0",
+  "description": "link with database for restaurant app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Joanna",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "mongoose": "^5.9.3"
+  }
+}
