@@ -16,10 +16,10 @@ mongoose.connect('mongodb://localhost/restnode', { useNewUrlParser: true, useUni
 const reservationSchema = new mongoose.Schema({
     guestName: String, 
     partyNumber: Number, 
-    resDate:Date,   
-    time24hr:String,
-    //weekDay: String,
-    tableNumber: Number,   
+    resDate: Date,   
+    time24hr: String, 
+   // weekDay: String,
+    tableNumber: Number,  
     date: {type: Date, default: Date.now},
     instructions:String
 });
@@ -42,29 +42,30 @@ const port = 3200;
 
 app.listen(port, () => console.log(`Server started on port ${port}`))
 
+
 app.get('/api/reservation', cors(), (req, res) => {
     //const dishes =  getDish();
     //console.log('api.get dishes -',dishes);
     //res.json(dishes);
     var query = req.params.query;
     Reservation
-    .find({'request': query}, function(err, result)
-        {if (err) throw err;
-        if (result) {
-            res.json(result)
-        } else ( res.send(JSON.stringify({error: 'Error'})))})
-    .select({id: 1, guestName: 1, partyNumber: 1, resDate:1, time24hr:1,tableNumber:1,date:1,instructions:1
-            });  //chose which fields you want  weekDay:1,
+        .find({'request': query}, function(err, result)
+            {if (err) throw err;
+             // {if (err) return next(err);
+            if (result) {
+                res.json(result)
+            } else ( res.send(JSON.stringify({error: 'Error'})))})
+        .select({id: 1, guestName: 1, partyNumber: 1, resDate:1, time24hr:1,tableNumber:1,date:1,instructions:1}); //chose which fields you want  weekDay:1,
 })
 app.post('/api/reservation', cors(), (req,res) =>{  
-    console.log(JSON.stringify(req.body)); 
+   console.log(JSON.stringify(req.body)); 
     //console.log(JSON.stringify(req));   
     var reservation = new Reservation({
         guestName: req.body.guestName,  
         partyNumber: req.body.partyNumber,
         resDate: req.body.resDate,
         time24hr: req.body.time24hr,
-       // weekDay: req.body.weekDay,
+        //weekDay: req.body.weekDay,
         tableNumber: req.body.tableNumber,
         date: req.body.date,
         instructions: req.body.instructions
