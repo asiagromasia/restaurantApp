@@ -4,10 +4,9 @@ import axios from 'axios';
 export default class AddsTables extends Component {
            state = {
            number: '', 
-           status: 'Available',
-          orderButton:'',
-    reservationButton:''
-
+           tableStatus: 'Available',
+          orderStatus:'To be placed'
+          
         }
 
    
@@ -44,35 +43,46 @@ export default class AddsTables extends Component {
     }
 render(){
     return(
+    <div>
         <div>
-        <div>
-        <li>Table 1 Status:Available/Occupied/Reserved
-        <a href='http://localhost:3000/api/reservation/table?1'><button type="reserve"> Reserve</button></a>
-        <a href='http://localhost:3000/api/dish'><button type="order"> Orders</button></a>
-        Order status:          
-                        <select name="version" onChange={this.handleChange} value={this.state.version}>            
-                            <option value="tobeplaced">to be placed</option>             
-                            <option value="placed">placed</option>                             
-                        </select>   
+        <li>Table 1 
+        Status:<input type="text" name="tableStatus" value={this.state.tableStatus} onChange={this.handleChange}/>   
+        <a href='http://localhost:3000/api/reservation/table:1'><button type="reserve"> Reserve</button></a>
+        <label>
+        Order status: <input type="text" name="orderStatus" value={this.state.orderStatus} onChange={this.handleChange}/>        
+        </label>
+        <a href='http://localhost:3000/api/order/table:1'><button type="order"> Orders</button></a> 
         </li>
         </div> 
         <div>
         <li>Table 2
-        <a href='http://localhost:3000/api/reservation/table?2'><button type="reserve"> Reserve</button></a>
-        <a href='http://localhost:3000/api/dish'><button type="order"> Orders</button></a>
+        Status:<input type="text" name="tableStatus" value={this.state.tableStatus} onChange={this.handleChange}/>   
+        <a href='http://localhost:3000/api/reservation/table:2'><button type="reserve"> Reserve</button></a>
+        <label>
+        Order status: <input type="text" name="orderStatus" value={this.state.orderStatus} onChange={this.handleChange}/>        
+        </label>
+        <a href='http://localhost:3000/api/order/table:2'><button type="order"> Orders</button></a> 
         </li>
         </div> 
         <div>
         <li>Table 3
-        <a href='http://localhost:3000/api/reservation/table?3'><button type="reserve"> Reserve</button></a>
-        <a href='http://localhost:3000/api/dish'><button type="order"> Orders</button></a>
+        Status:<input type="text" name="tableStatus" value={this.state.tableStatus} onChange={this.handleChange}/>   
+        <a href='http://localhost:3000/api/reservation/table:3'><button type="reserve"> Reserve</button></a>
+        <label>
+        Order status: <input type="text" name="orderStatus" value={this.state.orderStatus} onChange={this.handleChange}/>        
+        </label>
+        <a href='http://localhost:3000/api/order/table:3'><button type="order"> Orders</button></a> 
         </li>
         </div> 
         <div>
         <li>Table 4
-        <a href='http://localhost:3000/api/reservation/table?4'><button type="reserve"> Reserve</button></a>
-        <a href='http://localhost:3000/api/dish'><button type="order"> Orders</button></a>
-        <a href='http://localhost:3200/api/dish'><button>alldishes</button></a>
+        Status:<input type="text" name="tableStatus" value={this.state.tableStatus} onChange={this.handleChange}/>   
+        <a href='http://localhost:3000/api/reservation/table:1'><button type="reserve"> Reserve</button></a>
+        <label>
+        Order status: <input type="text" name="orderStatus" value={this.state.orderStatus} onChange={this.handleChange}/>        
+        </label>
+        <a href='http://localhost:3000/api/order/table:1'><button type="order"> Orders</button></a> 
+        <a href='http://localhost:3200/api/orders'><button>alldishes</button></a>
         </li>
         </div> 
         </div>
